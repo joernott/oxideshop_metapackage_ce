@@ -235,6 +235,8 @@ jobs:
 
       - name: 'Rename files'
         run: |
+          find . -iname "composer.lock"
+          find . -iname "composer.json"
           mv source/source/composer.lock ${{matrix.php}}-composer.lock
           mv source/source/composer.json.bak ${{matrix.php}}-composer.json
 
