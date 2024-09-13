@@ -121,7 +121,7 @@ jobs:
       - name: 'Checkout testplans'
         uses: actions/checkout@v4
         with:
-          ref: 'release_${{inputs.version}}'
+          ref: '${{inputs.dev_branch}}'
           sparse-checkout: |
             '.github/oxid-esales'
             composer.json
