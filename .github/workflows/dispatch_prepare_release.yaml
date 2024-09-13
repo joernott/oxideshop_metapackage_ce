@@ -169,7 +169,7 @@ jobs:
           prefix: '${{ needs.init.outputs.global_title }}'
           root_testplan: ${{ needs.init.outputs.testplan }}
           matrix_testplan: ''
-          plan_folder: ${{ inputs.plan_folder }}
+          plan_folder: '.github/oxid-esales'
           cache_name: ${{ needs.init.outputs.init_cache_name }}
           cache_endpoint: ${{ secrets.CACHE_ENDPOINT }}
           cache_access_key: ${{ secrets.CACHE_ACCESS_KEY }}
