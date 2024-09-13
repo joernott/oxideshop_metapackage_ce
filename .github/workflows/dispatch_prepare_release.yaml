@@ -97,6 +97,7 @@ jobs:
           # ToDo: Remove the ,.github/oxid-esales/defaults/_rename.yaml when releasing v5
           DEFAULTS=".github/oxid-esales/defaults/defaults_light.yaml"
           echo "testplan=${DEFAULTS},${TESTPLAN},.github/oxid-esales/defaults/_rename.yaml" >>"${GITHUB_OUTPUT}"
+          find .
 
       - name: 'Load Testplan'
         id: ltp
