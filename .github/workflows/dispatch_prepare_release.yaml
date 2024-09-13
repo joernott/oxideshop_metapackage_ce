@@ -80,10 +80,8 @@ jobs:
           branch: 'release_${{inputs.version}}'
           title: 'Prepare release ${{inputs.version}}'
 
-  build_testplan:
-    runs-on: ${{ fromJson(inputs.runs_on) }}
-    outputs:
-      testplan: '${{ steps.build.outputs.testplan }}'
+  init:
+    runs-on: ${{ fromJSON(inputs.runs_on) }}
     steps:
       - name: 'Build matrix'
         id: build
@@ -106,10 +104,6 @@ jobs:
           fi
           echo "testplan=${TESTPLAN}" | tee -a "${GITHUB_OUTPUT}"
 
-  init:
-    needs: build_testplan
-    runs-on: ${{ fromJSON(inputs.runs_on) }}
-    steps:
       - name: 'Checkout testplan defaults'
         uses: actions/checkout@v4
         with:
@@ -147,7 +141,7 @@ jobs:
               mysql: '["${{ inputs.mysql_version}}"]'
           EOF
 
-          TESTPLAN=$(echo "${{ needs.build_testplan.outputs.testplan }}"|sed -e 's|~|.github/oxid-esales|g')
+          TESTPLAN=$(echo "${{ steps.build.outputs.testplan }}"|sed -e 's|~|.github/oxid-esales|g')
           # ToDo: Remove the ,.github/oxid-esales/defaults/_rename.yaml when releasing v5
           DEFAULTS=".github/oxid-esales/defaults/defaults_light.yaml"
           echo "testplan=${DEFAULTS},${TESTPLAN},.github/oxid-esales/defaults/_rename.yaml" >>"${GITHUB_OUTPUT}"
