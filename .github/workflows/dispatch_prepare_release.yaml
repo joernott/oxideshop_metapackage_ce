@@ -318,14 +318,14 @@ jobs:
             }
             core.summary
               .addSeparator()
-              .addHeading(`Pinned versions for ${branch}`, '1')
+              .addHeading(`Pinned versions`, '1')
               .addCodeBlock(JSON.stringify(all,null,4), 'json')
               .write()
-            core.info(`Mandatory list for ${branch}`);
+            core.info(`Mandatory list`);
             core.info("========================");
             core.info(JSON.stringify(require));
             core.info("========================");
-            core.info(`Full list  for ${branch}`);
+            core.info(`Full list`);
             core.info("========================");
             core.info(JSON.stringify(all));
             var composer_data = {
