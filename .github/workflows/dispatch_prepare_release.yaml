@@ -122,20 +122,7 @@ jobs:
             sed -e 's#\-\-*#-#' -e 's#\_\_*#_#g'| \
             tee -a "${GITHUB_OUTPUT}"
 
-      - name: Cache testplan on S3
-        if: ${{ inputs.runs_on != '"ubuntu-latest"'}}
-        uses: tespkg/actions-cache/save@v1
-        with:
-          path: |
-            .github/oxid-esales/*
-          key: '${{ steps.ltp.outputs.init_cache_name }}'
-          endpoint: ${{ secrets.CACHE_ENDPOINT }}
-          accessKey: ${{ secrets.CACHE_ACCESS_KEY }}
-          secretKey: ${{ secrets.CACHE_SECRET_KEY }}
-          bucket: ${{ steps.ltp.outputs.init_cache_bucket }}
-
       - name: Cache testplan on Github
-        if: ${{ inputs.runs_on == '"ubuntu-latest"'}}
         uses: actions/cache/save@v4
         with:
           path: |
