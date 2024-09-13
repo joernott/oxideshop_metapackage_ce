@@ -53,7 +53,7 @@ install:
             "oxid-esales/oxideshop-ce": {
               "type": "git",
               "url": "https://github.com/OXID-eSales/oxideshop_ce.git"
-            },
+            }
           },
           "autoload-dev":{
               "psr-4":{

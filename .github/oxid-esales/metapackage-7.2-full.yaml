@@ -58,7 +58,7 @@ install:
             "oxid-esales/oxideshop-ce": {
               "type": "git",
               "url": "https://github.com/OXID-eSales/oxideshop_ce.git"
-            },
+            }
           },
           "autoload-dev":{
               "psr-4":{
@@ -75,13 +75,7 @@ install:
           },
           "bin":[
               "bin/oe-console"
-          ],
-          "config":{
-              "allow-plugins":{
-                "oxid-esales/oxideshop-composer-plugin":true,
-                "oxid-esales/oxideshop-unified-namespace-generator":true
-              }
-          }
+          ]
       }
   activate_modules: |
     oegdproptin
