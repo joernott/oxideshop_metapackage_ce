@@ -62,7 +62,7 @@ jobs:
           cd repo
           git config --global user.email "no-reply@oxid-esales.com"
           git config --global user.name "${{ github.actor }}"
-          git checkout '${{ inputs.dev_branch }}'
+          git checkout 'b-${{ inputs.dev_branch }}'
           git pull
 
       - name: Generate a token
