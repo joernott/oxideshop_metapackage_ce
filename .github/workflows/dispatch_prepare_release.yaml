@@ -69,7 +69,7 @@ jobs:
         with:
           ref: 'b-${{inputs.dev_branch}}'
           sparse-checkout: |
-            '.github/oxid-esales'
+            .github/oxid-esales
             composer.json
           path: workflow
 
@@ -78,7 +78,7 @@ jobs:
         run: |
           mkdir -p '.github/oxid-esales/defaults'
           if [ -d workflow/.github/oxid-esales ]; then
-            mv workflow/.github/oxid-esales/* '.github/oxid-esales/'
+            mv -v workflow/.github/oxid-esales/* '.github/oxid-esales/'
             /bin/rm -r 'workflow/.github/oxid-esales'
           fi
           if [ -f workflow/composer.json ]; then
