@@ -190,6 +190,18 @@ jobs:
           logfile: load_testplan_install.log
           token: ${{ secrets.enterprise_github_token }}
 
+      - name: 'Switch stability to stable'
+        uses: 'OXID-eSales/github-actions/composer_merge@v4'
+        with:
+          file: 'repo/composer.json'
+          backup: false
+          transform: |
+            {
+              "minimum-stability": "stable"
+            }
+          update: false
+          github_token: ''
+
       - name: 'Prepare Shop'
         id: prepare_shop
         uses: 'OXID-eSales/github-actions/prepare_shop@v4'
@@ -329,7 +341,6 @@ jobs:
             core.info("========================");
             core.info(JSON.stringify(all));
             var composer_data = {
-              "minimum-stability": "stable",
               "require": all
             }
             core.setOutput('json', JSON.stringify(composer_data));
@@ -376,7 +387,7 @@ jobs:
           transform: |
             ${{ needs.process_data.outputs.json }}
           update: false
-          github_token: ${{ secrets.enterprise_github_token || github.token }}
+          github_token: ''
 
       - name: Generate a token
         id: generate_token
